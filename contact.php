@@ -1,18 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
         integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Document</title>
-    <style>
-        /* -- About Section Start From here -- */
-        * {
+    <title>Header</title>
+    <style>/* BASIC */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -247,52 +247,90 @@ input[type=checkbox] {
     }
 }
 body{
-    background-color: lightyellow;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('b2.png');
+    background-size: cover;
+    background-position: center;
+  
 }
-.main{
-    margin-top: 5%;
-}
-#about-section{
-    width: 80%;
-    margin: auto;
-    height: auto;
+.home {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    min-height: 100vh;
+    
 }
-.about-left{
-    width: 50%;
-    text-align: center;
-    float: left;
-}
-.about-right{
-    width: 50%;
-    padding-left: 5%;
-    text-align: center;
-}
-.about-right h1{
-    color:red;
-    font-size: 50px;
-    font-family: cursive;
-    text-shadow: 2px 2px black;
-    margin-bottom: 5px;
-}
-.about-right p{
-    color: black;
-    font-size: 30px;
-    text-shadow: 1px 1px grey;
-    font-weight: bold;
-}
-h2{
-    font-size: 30px;
-    color: grey;
-    text-shadow: 1px 1px black  ;
+form{
 
+ background-color: grey;
+  width: 70%;
+ 
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 50px;
+  border:1px solid black;
+  height: 500px;
+
+}
+form h2{
+  text-align: center;
+  font-size: 40px;
+  color:black;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+form input{
+  width: 80%;
+  margin: auto;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 20px;
+  color:white;
+  margin-top: 20px;
+}
+form input::placeholder{
+  color:aliceblue;
+  font-size: 20px;
+}
+form textarea{
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  margin-left: 10%;
+  font-size: 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding-left: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+}
+textarea::placeholder{
+  color: white;
+}
+form button{
+  width: 50%;
+  color:white;
+  background-color: red;
+  border: none;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-size: 20px;
+  margin-top: 40px;
+}
+button:hover{
+  background-color: darkred;
 }
 </style>
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <!-- LOGO -->
         <div class="logo">
             Hello Gardeners
@@ -303,7 +341,7 @@ h2{
             <input type="checkbox" id="checkbox_toggle" />
             <label for="checkbox_toggle" class="hamburger">&#9776;</label>
             <!-- NAVIGATION MENUS -->
-            <div class="menu">
+            <div class="menu">  
                 <li><a href="home.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li class="services">
@@ -332,29 +370,26 @@ h2{
             </div>
         </ul>
     </nav>
-    <!-- About Section Start From here -->
-<div class="main">
 
-<section id="about-section">
-            <!-- about left  -->
-            <div class="about-left">
-                <img src="display1.png" width="650px" />
-            </div>
+    <section class="home" id="home">
+    <form>
+		
+		<h2>Get in Touch with Us</h2>
+		<form action="" method="post">
+			<input class="" type="text" name="name" value="" placeholder="Enter your Name here" required>
 
-            <!-- about right  -->
-            <div class="about-right">
-                <h1>About Hello Gardeners</h1>
+			<input class="" type="text" name="mobile" value="" placeholder="Enter your Mobile Number here" maxlength="10" required>
 
-    <p>Which is a e-commerce platform for Gardening Lovers.</p>
-    <p>Our main motto is to inspire you to have plants arround you and connect you to the nature. </p>
-    <h2>Email address: hellogardeners@gmail.com</h2>
-        
-               
-            </div>
-        </section>
+			<input class="" type="email" name="email" value="" placeholder=" Enter your Email here" required>
 
-</div>
+			<textarea class="" name="message" placeholder="Enter your message here..." required></textarea>
+			
+		<button tytype="submit" name="message" value="message">Submit</button>
 
+	
+		</form>
+    </section>
 
 </body>
+
 </html>

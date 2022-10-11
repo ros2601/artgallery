@@ -1,18 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
         integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Document</title>
-    <style>
-        /* -- About Section Start From here -- */
-        * {
+    <title>Header</title>
+    <style>/* BASIC */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -246,53 +246,65 @@ input[type=checkbox] {
         padding: 40% 0% 10% 22%;
     }
 }
-body{
-    background-color: lightyellow;
-}
-.main{
-    margin-top: 5%;
-}
-#about-section{
-    width: 80%;
-    margin: auto;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.about-left{
-    width: 50%;
-    text-align: center;
-    float: left;
-}
-.about-right{
-    width: 50%;
-    padding-left: 5%;
-    text-align: center;
-}
-.about-right h1{
-    color:red;
-    font-size: 50px;
-    font-family: cursive;
-    text-shadow: 2px 2px black;
-    margin-bottom: 5px;
-}
-.about-right p{
-    color: black;
-    font-size: 30px;
-    text-shadow: 1px 1px grey;
-    font-weight: bold;
-}
-h2{
-    font-size: 30px;
-    color: grey;
-    text-shadow: 1px 1px black  ;
 
+
+.home {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: url('b2.png') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
+
+.home .content {
+    max-width: 50rem;
+    margin-left: 80px;
+    text-align: center;
+    padding: 1rem 0;    
+}
+
+.home .content h3 {
+    font-size: 55px;
+    text-shadow: 2px 1px white;
+    font-family: cursive;
+}
+
+.home .content span {
+   font-size: 45px;
+   text-align: center;
+   color: white;
+    text-shadow: 2px 2px black;
+}
+
+.home .content p {
+    font-size:30px;
+    color: lightpink;
+    text-shadow: 2px 2px black;
+    line-height: 50px;
+    font-family: cursive;
+}
+.content a{
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    border-radius: 14px;
+    border: 1px solid black;
+    padding: 8px 13px;
+    background-color: white;
+    line-height: 100px;
+}
+.content a:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid ;
+}
+
 </style>
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <!-- LOGO -->
         <div class="logo">
             Hello Gardeners
@@ -321,40 +333,29 @@ h2{
 
            <div class="search"><input type="text" name="search" placeholder="Search for Plants, Seeds and many more..." /> <button>Search</button></div>
                 <div class="login">
-                <a href="register.php" class="fa fa-user"> Login</a>
-                <a  href="logout.php" class="fa fa-user"> Logout</a>
-
+                  <a  href="register.php"  class="fa fa-user"> Login</a>
+                  <a  href="logout.php" class="fa fa-user"> Logout</a>
                 </div>
                 <div class="icons">
-                  <a href="mycart.php" class="fa fa-shopping-cart"> My Cart</a>
+                <a  href="mycart.php" class="fa fa-shopping-cart"> My Cart</a>
+              
                 </div>
              
             </div>
         </ul>
     </nav>
-    <!-- About Section Start From here -->
-<div class="main">
 
-<section id="about-section">
-            <!-- about left  -->
-            <div class="about-left">
-                <img src="display1.png" width="650px" />
-            </div>
+    <section class="home" id="home">
 
-            <!-- about right  -->
-            <div class="about-right">
-                <h1>About Hello Gardeners</h1>
-
-    <p>Which is a e-commerce platform for Gardening Lovers.</p>
+<div class="content">
+    <h3>Welcome to Hello Gardeners</h3>
+    <span>which is a e-commerce platform for Gardening Lovers.....</span>
     <p>Our main motto is to inspire you to have plants arround you and connect you to the nature. </p>
-    <h2>Email address: hellogardeners@gmail.com</h2>
-        
-               
-            </div>
-        </section>
-
+    <a href="#" class="btn">Shop Now</a>
 </div>
 
+</section>
 
 </body>
+
 </html>
