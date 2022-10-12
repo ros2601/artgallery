@@ -55,11 +55,6 @@
             </div>
         </form>
     </div>
-    <script >
-        $(document).ready(function(){
-            console.log("hello");
-        });
-    </script>
 </body>
 
 </html>

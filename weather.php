@@ -1,46 +1,86 @@
 <?php
-$apiKey = "API KEY";
-$cityId = "CITY ID";
-$googleApiUrl = "https://api.openweathermap.org/data/2.5/weather?id=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+$city="";
+$status="";
+$message="";
 
-$ch = curl_init();
+if(isset($_POST['submit'])){
+    $city=$_POST['city'];
+    $url="http://api.openweathermap.org/data/2.5/weather?q=$city&appid=49c0bad2c7458f1c76bec9654081a661";
+    $ch=curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    $result=curl_exec($ch);
+    curl_close($ch);
+    $result=json_decode($result,true);
+    
+    if($result['cod']==200){
+        $status="yes";
+    }
+    else{
+        $message=$result['message'];
+    }
+}
+?>
 
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_VERBOSE, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-$response = curl_exec($ch);
+<html lang="en" class=" -webkit-">
+   <head>
+      <meta charset="UTF-8">
+      <title>Weather</title>
+       <style>
+         body{
+            background:lightyellow;
+         }
+      .input{
+        width: 80%;
+        text-align:center;
+        margin:auto; 
+         
+      }
+      .output{
+        width: 30%;
+        text-align:center;
+        margin:auto; 
 
-curl_close($ch);
-$data = json_decode($response);
-$currentTime = time();
-?>  
+        padding:5%;
+        border-radius:10px; 
+      }
+      .output h2{
+         font-size:20px;   
+        
 
-<!doctype html>
-<html>
-<head>
-<title>Forecast Weather using OpenWeatherMap with PHP</title>
-</head>
-<body>
-    <div class="report-container">
-        <h2><?php echo $data->name; ?> Weather Status</h2>
-        <div class="time">
-            <div><?php echo date("l g:i a", $currentTime); ?></div>
-            <div><?php echo date("jS F, Y",$currentTime); ?></div>
-            <div><?php echo ucwords($data->weather[0]->description); ?></div>
-        </div>
-        <div class="weather-forecast">
-            <img
-                src="https://openweathermap.org/img/w/<?php echo $data->weather[0]->icon; ?>.png"
-                class="weather-icon" /> <?php echo $data->main->temp_max; ?>°C<span
-                class="min-temperature"><?php echo $data->main->temp_min; ?>°C</span>
-        </div>
-        <div class="time">
-            <div>Humidity: <?php echo $data->main->humidity; ?> %</div>
-            <div>Wind: <?php echo $data->wind->speed; ?> km/h</div>
-        </div>
-    </div>
-</body>
+      }
+      .input form{
+         width:50%;
+         margin:auto;
+         padding:2%;
+         
+      }
+      input{
+         border-radius:5px;
+         padding:7px 10px 7px 10px;
+         border:1px solid grey;
+      }
+      </style> 
+   </head>
+   <body>
+   <?php echo $message?>
+      <div class="input">
+         <form method="post">
+            <input type="text" class="text" placeholder="Enter city name" name="city" value="<?php echo $city?>"/>
+            <input type="submit" value="Submit" class="submit" name="submit"/>
+         </form>
+      </div>
+      <div class="output">
+      <?php if($status=="yes"){?>
+         <h2>Showing results for City :  <?php echo $result['name']?></h2>
+         <img src="http://openweathermap.org/img/wn/<?php echo $result['weather'][0]['icon']?>@4x.png"/></h2>
+         <h2>Date: <?php echo date('d M Y',$result['dt'])?> </h2>
+         <h2>Temperature : <?php echo round($result['main']['temp']-273.15)?>°C</h2>
+         <h2>Weather :  <?php echo $result['weather'][0]['main']?></h2>
+        
+         <h2>Wind Speed : <?php echo $result['wind']['speed']?> M/H</h2>
+        
+      <?php } ?>
+      </div>
+   </body>
 </html>

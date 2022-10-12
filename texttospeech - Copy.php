@@ -5,7 +5,7 @@ if(isset($_REQUEST['convert']))
     $text=$_REQUEST['text'];
     $text=htmlspecialchars($text);
     $text=rawurlencode($text);
-    //echo $text;
+    echo $text;
     $html=file_get_contents('https://translate.google.com/translate_tts?ie=UTF-8&client=gtx&q='.$text.'&tl=en-IN');
 	$player="<audio controls='controls'><source src='data:audio/mpeg;base64,".base64_encode($html)."'></audio>";
 	
@@ -27,36 +27,37 @@ if(isset($_REQUEST['convert']))
 </head>
 
 <body>
-   
-<div class="container d-flex justify-content-center" style="height: 100vh;">
-    <div class="col-md-5 card1">
-      <h3 class="text-center mb-4">Text to speech Translator</h3>
+    <div class="container">
+        <h2 class="text-center">Convertor</h2>
+        <form class="form-horizontal" action="">
 
-        <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-10">
                     <input type="textbox" id="text" class="form-control"  name="text" placeholder="Enter text..">
                 </div>
             </div>
+            
             <br/>
             <div class="form-group">
                 <div class="control-label col-sm-2 col-sm-10">
                     <button type="submit" name="convert" value="convert" class="btn btn-primary">Convert</button>
                 </div>
             </div>
-        </form><br/>
+       <br/>
         <?php
             if($player)
             {
-        ?>
-      
-        <?php
+                ?>
+            
+                <div class="control-label col-sm-2 col-sm-10">
+                <?php
                 echo $player;
-        }
-        ?>
-        </div>
-    </div>
-                  
+            }
+            ?>
+                </div>
+            </div>
+            </form>
+          
     </div>
 </body>
 
